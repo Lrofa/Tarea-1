@@ -1,0 +1,86 @@
+---
+title: "Tarea 1"
+author: "Luciabril Rodriguez"
+date: "14 de abril de 2018"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r, echo=FALSE, message = FALSE , warning=FALSE}
+library(ggplot2)
+library(gapminder)
+```
+## Ejercicio 1
+```{r, echo= FALSE}
+cap1 <- "Figura 1: Grafico de dispersion de las variables Experanza de vida vs Años, en donde se intenta explicar la evolucion de la primera variable en funcion de la segunda para cada continente. Claramente se observa como a medida que avanzan los años, tambien aumenta la experanza de vida repitiendose en cada uno de los continentes, aunque cabe destacar que la forma en que lo hacen es diferente para cada uno de ellos, es decir aumentan los años de esperanza de vida en cantidades diferentes ."
+```
+
+
+```{r, echo=TRUE, fig.cap= cap1}
+library(ggplot2)
+library(gapminder)
+ggplot(gapminder, aes(year, lifeExp, colour= continent)) +
+geom_point() +
+geom_smooth(method="lm", se = FALSE) +
+ labs(x = "Años tomados en cuenta para el estudio", 
+      y = "Esperanza de vida, medida en años")
+
+```
+
+## EJERCICIO 2
+
+```{r, echo=TRUE}
+library(ggplot2)
+library(gapminder)
+ggplot(gapminder, aes(year, lifeExp, colour= continent)) +
+geom_smooth(method="lm", se = FALSE) +
+ labs(x = "Años tomados en cuenta para el estudio", 
+      y = "Esperanza de vida medida en años")
+
+```
+
+
+En mi opinion, creo que esto sucede debido a que en realidad no estamos queriendo observar cada valor punto a punto, sino que mas bien queremos observar una tendencia y eso se logra poniedo el geom_smooth, en este caso el geom_point solo seria informacion adicional.
+
+## EJERCICIO 3
+
+```{r, echo = TRUE}
+ggplot(gapminder, aes(gdpPercap, lifeExp, colour = continent)) +
+    geom_point(alpha= 1/3) +
+  labs(x= "PBI per capita medido en dólares", y="Esperanza de vida medida en años")
+```
+
+
+
+Esta es una de las formas posibles de corregir el sobre ploteo y la utilice porque es en donde mas se aprecia la cantidad de paises que hay en un mismo lugar, de la otra manera se perderia informacion importante. 
+Una de la caracteristicas del grafico es que si comparamos Europa con Asia vemos que el primero en general tiene bajos niveles de PBI en cambio Europa tiene una variacion bastante alta de este, pero si comparamos a mismos niveles de PBI Europa tiene una mayor esperanza de vida que Africa.
+
+## EJERCICIO 4
+```{r, echo= FALSE}
+cap2 <- "Figura 2: Grafico de lineas que mide el PBI per capita a traves del tiempo separado por continentes. En el mismo se puede observar una serie de tiempo en base al PBI para cada uno de los paises estudiados.Queda claramente expuesto como con el correr de los años la gran mayoria de los paises o mantienen su Pbi o lo aumentan, salvo en el caso de Asia, donde hay un solo pais que ha tenido un descenso sustancial del mismo.  "
+```
+```{r, echo = TRUE, fig.cap= cap2}
+library(ggplot2)
+library(gapminder)
+ggplot(gapminder, aes(year,gdpPercap,colours=country, legends= FALSE))+
+ geom_line()+
+ geom_smooth(method= "lm", se= FALSE)+
+ facet_wrap(~continent)+
+  labs(x= "Años tomados en cuenta para el estudio", y= "PBI per capita medido en dólares")
+```
+
+## EJERCICIO 5
+```{r, echo = TRUE}
+ggplot(gapminder, aes(gdpPercap, pop))+
+ geom_point(alpha= 1/3)+
+ facet_wrap(~continent)+
+  labs(x= "PBI per capita medidio en dólares", y= "Población de cada pais")
+```
+
+Este grafico expone la evolucion del PBI en base a la poblacion, en este caso se destacan dos contientes por ser practicamente opuestos, estos son America y Asia.
+En el caso del primero vemos como a medida que aumenta la poblacion el Pbi tambien lo hace aunque cabe aclarar que son muy pocos paises los que tienen un alto nivel economico.
+Asia por el contrario, a muy altos niveles de población tiene un PBI sumamente bajo y a su vez cuando la cantidad de personas disminuye aumenta considerablemente los niveles de producto bruto interno.
