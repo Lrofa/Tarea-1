@@ -30,6 +30,9 @@ geom_smooth(method="lm", se = FALSE) +
       y = "Esperanza de vida, medida en años")
 
 ```
+<span style="color:green">
+Bien. Corregir ortografía, acentos
+</span>
 
 ## EJERCICIO 2
 
@@ -46,6 +49,10 @@ geom_smooth(method="lm", se = FALSE) +
 
 En mi opinion, creo que esto sucede debido a que en realidad no estamos queriendo observar cada valor punto a punto, sino que mas bien queremos observar una tendencia y eso se logra poniedo el geom_smooth, en este caso el geom_point solo seria informacion adicional.
 
+<span style="color:green">
+Bien, mirá la solución para que quede más claro porqué pasa esto en ggplot2. Corregir ortografía, acentos
+</span>
+
 ## EJERCICIO 3
 
 ```{r, echo = TRUE}
@@ -59,6 +66,9 @@ ggplot(gapminder, aes(gdpPercap, lifeExp, colour = continent)) +
 Esta es una de las formas posibles de corregir el sobre ploteo y la utilice porque es en donde mas se aprecia la cantidad de paises que hay en un mismo lugar, de la otra manera se perderia informacion importante. 
 Una de la caracteristicas del grafico es que si comparamos Europa con Asia vemos que el primero en general tiene bajos niveles de PBI en cambio Europa tiene una variacion bastante alta de este, pero si comparamos a mismos niveles de PBI Europa tiene una mayor esperanza de vida que Africa.
 
+<span style="color:green">
+En este caso no solo tenemos el prblema de sobre ploteo sino que además queremos identificar los distintos continentes. Es mejor en este caso usar facets para diferenciar los continentes.
+</span>
 ## EJERCICIO 4
 ```{r, echo= FALSE}
 cap2 <- "Figura 2: Grafico de lineas que mide el PBI per capita a traves del tiempo separado por continentes. En el mismo se puede observar una serie de tiempo en base al PBI para cada uno de los paises estudiados.Queda claramente expuesto como con el correr de los años la gran mayoria de los paises o mantienen su Pbi o lo aumentan, salvo en el caso de Asia, donde hay un solo pais que ha tenido un descenso sustancial del mismo.  "
@@ -67,11 +77,15 @@ cap2 <- "Figura 2: Grafico de lineas que mide el PBI per capita a traves del tie
 library(ggplot2)
 library(gapminder)
 ggplot(gapminder, aes(year,gdpPercap,colours=country, legends= FALSE))+
- geom_line()+
+ # geom_line()+
  geom_smooth(method= "lm", se= FALSE)+
  facet_wrap(~continent)+
   labs(x= "Años tomados en cuenta para el estudio", y= "PBI per capita medido en dólares")
 ```
+<span style="color:green">
+En este gráfico se ven lineas negras y azules porque estás usando `geom_line` y `geom_smooth` sacá este último. Por otro lado usaste `colours=country` y no funciona, te preguntaste porque?
+tendría que ser colour no colours, igual en este caso quedaría mal porque hay muchos países
+</span>
 
 ## EJERCICIO 5
 ```{r, echo = TRUE}
@@ -84,3 +98,12 @@ ggplot(gapminder, aes(gdpPercap, pop))+
 Este grafico expone la evolucion del PBI en base a la poblacion, en este caso se destacan dos contientes por ser practicamente opuestos, estos son America y Asia.
 En el caso del primero vemos como a medida que aumenta la poblacion el Pbi tambien lo hace aunque cabe aclarar que son muy pocos paises los que tienen un alto nivel economico.
 Asia por el contrario, a muy altos niveles de población tiene un PBI sumamente bajo y a su vez cuando la cantidad de personas disminuye aumenta considerablemente los niveles de producto bruto interno.
+
+<span style="color:green">
+Bien
+</span>
+
+
+<span style="color:green">
+Buen trabajo!, revisá la ortografía en general y principalmente te faltan muchos acentos. Puntos 90/100
+</span>
